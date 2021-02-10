@@ -4,7 +4,7 @@ from django.shortcuts import render,redirect
 from .models import Department,Profile,Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
+from .forms import ProfileForm, NewPostForm
 # Create your views here.
 
 @login_required(login_url='/accounts/login/')
