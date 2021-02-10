@@ -10,8 +10,8 @@ class Department(models.Model):
     department_unit = models.CharField(max_length=30)
     director_pic = ImageField(blank=True, manual_crop="1920x1080")
     employees_count = models.IntegerField(null=True)
-    office_contact = PhoneNumberField()
-    director_contact = PhoneNumberField()
+    office_contact = PhoneNumberField(blank=False)
+    director_contact = PhoneNumberField(blank=False)
 
     @classmethod
     def get_all_departments(cls):
