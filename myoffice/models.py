@@ -1,14 +1,16 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import User
-from tinymce.models import HTMLField,DateTimeField
-from pyuploadcare.dj.models import ImageField
+from tinymce.models import HTMLField
+from datetime import datetime
+# from pyuploadcare.dj.models import ImageField
 
 # Create your models here.
 class Department(models.Model):
     department_name = models.CharField(max_length=30)
     department_unit = models.CharField(max_length=30)
-    director_pic = ImageField(blank=True, manual_crop="1920x1080")
+    director_pic = models.ImageField(blank=True)
+    # profile_picture = models.ImageField(upload_to='images/')
     employees_count = models.IntegerField(null=True)
     office_contact = PhoneNumberField(blank=False)
     director_contact = PhoneNumberField(blank=False)
@@ -22,7 +24,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
     department = models.ManyToManyField(Department)
     email = models.EmailField()
-    profile_pic = ImageField(manual_crop ='1080x1080')
+    profile_pic = models.ImageField(blank=False)
     bio = HTMLField()
 
 class Post(models.Model):
