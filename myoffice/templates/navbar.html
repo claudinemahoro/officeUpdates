@@ -1,0 +1,37 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body>
+
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    {% if user.is_authenticated %}
+    {% if user.profile.profile_pic %}
+    <a href="{% url 'profile' username=user %}"><img src="{{user.profile.profile_pic.cdn_url}}" class="img-fluid" alt=""
+        style="object-fit: cover; object-position: 100% 0; width: 150px; height: 150px; border-radius: 50%; margin: auto; box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);"></a>
+    {% else %}
+    <div class="card-custom-avatar-profile">
+      <a href="{% url 'profile' username=user %}"><img class="img-fluid" src="#"
+          alt="Avatar"></a>
+    </div>
+    {% endif %}
+    <a href="{%url 'index'%}">Home</a>
+    <a href="{% url 'new-post' %}">Post updates</a>
+    <a href="{% url 'profile' username=user %}">Profile</a>
+    <a href="/accounts/password/change">Change Password</a>
+    <a href="/logout">Logout</a>
+    {% else %}
+    <a href="/accounts/login">Login</a>
+    {% endif %}
+  </div>
+
+</body>
+
+</html>
