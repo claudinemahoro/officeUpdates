@@ -1,10 +1,10 @@
 from django import forms
 from .models import Profile, Post
 
-class NewPostForm(forms.Form):
+class NewPostForm(forms.ModelForm):
   class Meta:
     model = Post
-    exclude = ['post_user','post_department']
+    exclude = ['post_date']
 
 class ProfileForm(forms.ModelForm):
   class Meta:

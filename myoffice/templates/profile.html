@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load bootstrap3 %}
 {% load static %}
-{% load staticfiles %}
+{% load static %}
 
 
 {% block content %}
 
 <div class="container-fluid"
-    style="background-image: url(https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDd8fG9mZmljZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60),linear-gradient(330deg, rgba(56, 64, 70, 0.5) 0%, rgba(86, 64, 88, 0.699) 100%); background-blend-mode: overlay; background-repeat:no-repeat; background-size: cover; background-position: center; ">
+    style="background-image: url(https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTN8fG9mZmljZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60),linear-gradient(330deg, rgba(56, 64, 70, 0.5) 0%, rgba(86, 64, 88, 0.699) 100%); background-blend-mode: overlay; background-repeat:no-repeat; background-size: cover; background-position: center; ">
     <div class="row" style="padding-bottom: 10%;">
         <div class="col-md-4 mx-auto mt-5 bg-light pt-5 pb-3">
             <div class="text-center">
@@ -16,10 +16,11 @@
                         style="border-radius: 50%;">
                 </div>
                 <hr>
-                <p class="mt-2">Username: <strong>{{user.profile.user}}</strong></p>
-                <p class="card-text">Email: <strong>{{user.profile.email}}</strong></p>
+                <img src="{{ user.profile.profile_pic.url }}" class="img_profile">
+                <p class="mt-2">Username: <strong>{{user.username}}</strong></p>
+                <p class="card-text">Email: <strong>{{user.email}}</strong></p>
                 <p class="card-text">Department: <strong>{{user.profile.department}}</strong></p>
-                <p class="card-text">Bio: {{user.profile.bio |safe}}</p>
+                <p class="card-text">Bio: {{user.profile.bio}}</p>
 
 
             </div>

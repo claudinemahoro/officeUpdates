@@ -9,7 +9,7 @@ from datetime import datetime
 class Department(models.Model):
     department_name = models.CharField(max_length=30)
     department_unit = models.CharField(max_length=30)
-    director_pic = models.ImageField(blank=True)
+    director_pic = models.ImageField(upload_to='images/')
     # profile_picture = models.ImageField(upload_to='images/')
     employees_count = models.IntegerField(null=True)
     office_contact = PhoneNumberField(blank=False)
@@ -24,7 +24,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
     department = models.ManyToManyField(Department)
     email = models.EmailField()
-    profile_pic = models.ImageField(blank=False)
+    profile_pic = models.ImageField(upload_to='static/images/',blank=False)
     bio = HTMLField()
 
 class Post(models.Model):

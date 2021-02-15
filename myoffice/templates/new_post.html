@@ -1,5 +1,5 @@
 {% load bootstrap3 %}
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +22,6 @@
             <div class="col-md-6 col-lg-4 pb-3 m-auto" style="border: solid 1px #cacaca; border-radius: 10px; box-shadow: 0 0 15px rgba(10, 10, 10, 0.3); padding: 2%;">
                 <form action="{%url 'new-post'%}" method="post" enctype="multipart/form-data" style="padding: 2%;">
                     {%csrf_token%}
-
                     {% bootstrap_form form%}
                     <input type="submit" class="btn btn-success btn-lg" value="Post">
                 </form>
@@ -45,3 +44,6 @@
 </body>
 
 </html>
+
+
+

@@ -6,7 +6,7 @@
 
 
 <div class="container-fluid"
-  style="background-image: url({{ department.director_pic.cdn_url }}),linear-gradient(330deg, rgba(0, 21, 34, 0.57) 0%, rgba(52, 37, 54, 0.55) 100%); background-blend-mode: overlay; height: 500px; background-repeat:no-repeat; background-position: top; background-size: cover; background-position: center; margin-bottom: 4%; ">
+  style="background-image: url({{department.director_pic.cdn_url}}),linear-gradient(330deg, rgba(0, 21, 34, 0.57) 0%, rgba(52, 37, 54, 0.55) 100%); background-blend-mode:overlay , height: 500px , background-repeat:no-repeat; background-position:top , background-size:cover , background-position:center, margin-bottom:4,%">
   <div class="container header text-center">
     <div class="logo" style="padding-top: 10%;">
       
@@ -27,18 +27,16 @@
   </div>
   <div class="row pt-5 c_items text-center">
     <div class="col-md-4">
-      <img src="{%static 'images/icons8-police-96 (1).png'%}" alt="Local Police Contact" class="item img-fluid">
-      <p style="font-family: 'Alatsi', sans-serif; color: #fff;">{{ department.office_contact }}</p>
+      <!-- <img src="{%static 'images/icons8-police-96 (1).png'%}" alt="Local Police Contact" class="item img-fluid"> -->
+      <p style="font-family: 'Alatsi', sans-serif; color: black;">Office contact: {{ department.office_contact }}</p>
     </div>
+    <div class="col-md-4"> </div>
     <div class="col-md-4">
-      <img src="{%static 'images/icons8-hospital-sign-96 (1).png'%}" alt="Local Health Department Contact"
-        class="img-fluid">
-      <p style="font-family: 'Alatsi', sans-serif; color: #fff;">{{ department.director_contact }}</p>
+      <!-- <img src="{%static 'images/icons8-hospital-sign-96 (1).png'%}" alt="Local Health Department Contact" -->
+        <!-- class="img-fluid"> -->
+      <p style="font-family: 'Alatsi', sans-serif; color: black;">Director contact: {{ department.director_contact }}</p>
     </div>
-    <div class="col-md-4">
-      <img src="{%static 'images/icons8-crowd-100 (1).png'%}" alt="Office members" class="img-fluid">
-      <p style="font-family: 'Alatsi', sans-serif; color: #fff;"></p>
-    </div>
+    
   </div>
 
 
@@ -46,9 +44,18 @@
 <div class="container">
   <div class="container article-content">
     <h1 style="font-family: 'Alegreya Sans SC', sans-serif;" class="text-center">Updates</h1>
-    {%for bs in department.posts.all%}
-    {% autoescape on %}
-    <div class="row" id="article-row">
+    <!-- {%for bs in department.posts.all%}
+    {% autoescape on %} -->
+    {%if posts%}
+            {%for post in posts%}
+            <div class="jumbotron">
+            <strong>{{post.post_user}}: </strong> {{post.description}}
+            {%endfor%}
+            {%else%}
+            <p><b>No events posted by {{user.username}} yet!</b></p>
+            {%endif%}
+          </div>
+    <!-- <div class="row" id="article-row">
       <div class="col-md-5">
         <img class="fadeInUp details img-fluid" src="{{bs.bs_pic.cdn_url}}" width="100%">
       </div>
@@ -73,7 +80,7 @@
       </div>
 
     </div>
-    {% endautoescape %}
+    {% endautoescape %} -->
 
     {% empty %}
 

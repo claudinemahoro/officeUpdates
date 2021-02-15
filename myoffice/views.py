@@ -18,8 +18,8 @@ def profile(request, username):
 def my_office(request, id):
   title = "My office"
   department = Department.objects.get(id=id)
-
-  return render(request, 'office.html', {'title':title,'department':department})
+  posts=Post.objects.filter(post_department=department)
+  return render(request, 'office.html', {'title':title,'department':department,'posts':posts})
 
 def join(request, id):
   current_user = request.user
@@ -31,13 +31,18 @@ def join(request, id):
 @login_required(login_url='/accounts/login/')
 def new_post(request):
   current_user = request.user
+  department = Department.get_all_departments()
   if request.method == 'POST':
     form = NewPostForm(request.POST, request.FILES)
     if form.is_valid():
        post = form.save(commit=False)
-       post.profile = current_user
+       post.post_user = current_user
+       post.department=department
        post.save()
+       
     return redirect('index')
   else:
     form = NewPostForm()
   return render(request, 'new_post.html', {"form": form})
+
+
